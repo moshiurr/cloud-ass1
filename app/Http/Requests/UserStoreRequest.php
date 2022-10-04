@@ -27,7 +27,7 @@ class UserStoreRequest extends FormRequest
             'last_name' => 'required|string',
             'first_name' => 'required|string',
             'email' => 'required|email',
-            'book' => 'required|int',
+            'book_id' => 'required|int',
             'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'os' => 'required|string',
         ];

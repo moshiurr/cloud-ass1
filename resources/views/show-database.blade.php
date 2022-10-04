@@ -64,9 +64,57 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="full-height">
             <div>
-                Mailing List Contacts
+                <section class="content">
+                    <div class="pull-right" style="padding-bottom: 10px;">
+                        Mailing List Contacts
+                    </div>
+                    <div class="row">
+
+
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-body">
+                                    <table id="table" class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Last Name</th>
+                                            <th>First Name</th>
+                                            <th>Email Address</th>
+                                            <th>Phone Number</th>
+                                            <th>Book</th>
+                                            <th>Operating System</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        @if(isset($users))
+                                            @foreach($users as $user)
+                                                <tr>
+                                                    <td>{{$user->id}}</td>
+                                                    <td>{{$user->last_name}}</td>
+                                                    <td>{{$user->first_name}}</td>
+                                                    <td>{{$user->email}}</td>
+                                                    <td>{{$user->phone_number}}</td>
+                                                    <td>{{$user->book_name}}</td>
+                                                    <td>{{$user->os}}</td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </section>
             </div>
         </div>
     </body>
