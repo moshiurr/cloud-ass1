@@ -65,11 +65,11 @@
             <p>Which book would you like information about?</p>
 
             <!-- create drop-down list containing book names -->
-            <select name="book_id" id="book_id">
-                <option value="" disabled selected>Select Book</option>
-                @foreach($books as $book)
-                    <option value="{{$book->book_id}}">{{$book->book_name}}</option>
-                @endforeach
+            <select name="book" id="book">
+                <option value="Internet and WWW How to Program" selected>Internet and WWW How to Program</option>
+                <option value="C++ How to Program">C++ How to Program</option>
+                <option value="Java How to Program">Java How to Program</option>
+                <option value="Visual Basic How to Program">Visual Basic How to Program</option>
             </select>
 
             <h2>Operating System</h2>
@@ -79,7 +79,5 @@
             <p class="head"><input type="submit" name="submit" value="Register"></p>
         </form>
 
-        <div class="flex-center position-ref full-height">
-        </div>
     </body>
 </html>

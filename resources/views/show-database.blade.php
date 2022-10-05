@@ -98,7 +98,7 @@
                                                     <td>{{$user->first_name}}</td>
                                                     <td>{{$user->email}}</td>
                                                     <td>{{$user->phone_number}}</td>
-                                                    <td>{{$user->book_name}}</td>
+                                                    <td>{{$user->book}}</td>
                                                     <td>{{$user->os}}</td>
                                                 </tr>
                                             @endforeach

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Http\Request;
-use App\Models\Book;
+use App\Models\Contact;
 use App\Http\Requests\UserStoreRequest;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 
 class IndexController extends Controller
@@ -13,13 +12,12 @@ class IndexController extends Controller
     //
     public function index()
     {
-        $books = Book::all();
-        return view('index', compact(['books']));
+        return view('index');
     }
 
     public function showDatabase()
     {
-        $users = User::join('books', 'books.book_id', 'users.book_id')->get();
+        $users = Contact::all();
         return view('show-database', compact(['users']));
     }
 
@@ -27,13 +25,11 @@ class IndexController extends Controller
     {
         try {
             //handles the data
-            $newUser = User::create($request->validated());
-
+            Contact::create($request->validated());
             // return it to whole data page
-            return Redirect::to('/');
+            return Redirect::to('/showDatabase');
         }catch (\Exception $e){
             // handles the error
-            // duplicate email id
         }
     }
 

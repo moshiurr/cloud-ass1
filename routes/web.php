@@ -15,4 +15,4 @@ use App\Models\Book;
 
 Route::get('/', [\App\Http\Controllers\IndexController::class, 'index']);
 Route::get('/showDatabase', [\App\Http\Controllers\IndexController::class, 'showDatabase']);
-Route::post('/store', [\App\Http\Controllers\IndexController::class, 'store'])->name('save-user-data');
+Route::post('/', [\App\Http\Controllers\IndexController::class, 'store'])->name('save-user-data');
