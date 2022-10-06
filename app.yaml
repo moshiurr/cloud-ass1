@@ -4,10 +4,16 @@ env: flex
 runtime_config:
   document_root: public
 
-skip_files:
-  .env
+# required on some platforms so ".env" is not skipped
+skip_files: false
 
 env_variables:
+  # The values here will override those in ".env". This is useful for
+  # production-specific configuration. However, feel free to set these
+  # values in ".env" instead if you prefer.
   APP_LOG: errorlog
   APP_KEY: base64:px+1y0Y5FjDWv8u+sLre/swR5J8hhI57jk5APvI68Fg=
   STORAGE_DIR: /tmp
+
+beta_settings:
+  cloud_sql_instances: digital-proton-363303:us-central1:cs-4060

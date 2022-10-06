@@ -2,38 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Http\Request;
-use App\Models\Book;
+use App\Models\Contact;
 use App\Http\Requests\UserStoreRequest;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 
 class IndexController extends Controller
 {
-    //
     public function index()
     {
-        $books = Book::all();
-        return view('index', compact(['books']));
+        return view('index');
     }
+
 
     public function showDatabase()
     {
-        $users = User::join('books', 'books.book_id', 'users.book_id')->get();
-        return view('show-database', compact(['users']));
+        try {
+            $users = Contact::all();
+            return view('show-database', compact(['users']));
+        }catch (\Exception $exception){
+            Log::error($exception->getMessage());
+            dd("Database Connection failed. See the log file");
+        }
     }
 
     public function store(UserStoreRequest $request)
     {
         try {
             //handles the data
-            $newUser = User::create($request->validated());
-
-            // return it to whole data page
-            return Redirect::to('/');
+            $newContact = Contact::create($request->validated());
+            // return the success view
+            return view('success', compact(['newContact']));
         }catch (\Exception $e){
-            // handles the error
-            // duplicate email id
+            Log::error($e->getMessage());
+            dd("Database Connection failed. See the log file");
         }
     }
 
