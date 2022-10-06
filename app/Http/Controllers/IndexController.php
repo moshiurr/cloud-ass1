@@ -17,8 +17,13 @@ class IndexController extends Controller
 
     public function showDatabase()
     {
-        $users = Contact::all();
-        return view('show-database', compact(['users']));
+        try {
+            $users = Contact::all();
+            return view('show-database', compact(['users']));
+        }catch (\Exception $exception){
+            Log::error($exception->getMessage());
+            dd("Database Connection failed. See the log file");
+        }
     }
 
     public function store(UserStoreRequest $request)
@@ -29,7 +34,8 @@ class IndexController extends Controller
             // return it to whole data page
             return Redirect::to('/showDatabase');
         }catch (\Exception $e){
-            // handles the error
+            Log::error($e->getMessage());
+            dd("Database Connection failed. See the log file");
         }
     }
 
