@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Redirect;
 
 class IndexController extends Controller
 {
-    //
     public function index()
     {
         return view('index');
     }
+
 
     public function showDatabase()
     {
@@ -30,9 +30,9 @@ class IndexController extends Controller
     {
         try {
             //handles the data
-            Contact::create($request->validated());
-            // return it to whole data page
-            return Redirect::to('/showDatabase');
+            $newContact = Contact::create($request->validated());
+            // return the success view
+            return view('success', compact(['newContact']));
         }catch (\Exception $e){
             Log::error($e->getMessage());
             dd("Database Connection failed. See the log file");
