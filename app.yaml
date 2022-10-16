@@ -1,19 +1,22 @@
-runtime: php
-env: flex
-
+runtime: php74  # language and version of the app
 runtime_config:
-  document_root: public
-
-# required on some platforms so ".env" is not skipped
-skip_files: false
+ document_root: public   #folder where index.php is
 
 env_variables:
-  # The values here will override those in ".env". This is useful for
-  # production-specific configuration. However, feel free to set these
-  # values in ".env" instead if you prefer.
-  APP_LOG: errorlog
-  APP_KEY: base64:px+1y0Y5FjDWv8u+sLre/swR5J8hhI57jk5APvI68Fg=
-  STORAGE_DIR: /tmp
+ # Put production environment variables here.
+ APP_ENV: local  
+ APP_STORAGE: /tmp
+ VIEW_COMPILED_PATH: /tmp
+ APP_DEBUG : true # or false in production
+ APP_KEY: base64:px+1y0Y5FjDWv8u+sLre/swR5J8hhI57jk5APvI68Fg=
+ SESSION_DRIVER: cookie
+ APP_LOG: daily
+ APP_TIMEZONE: UTC 
+# database credentials
+ DB_DATABASE: cloud-1
+ DB_USERNAME: user # user name of the mysql user
+ DB_PASSWORD: password # password of the mysql user
+ DB_SOCKET: /cloudsql/digital-proton-363303:us-central1:cs-4060
 
-beta_settings:
-  cloud_sql_instances: digital-proton-363303:us-central1:cs-4060
+ LOG_DELETE:  true 
+ GOOGLE_VISION_PROJECT_ID : digital-proton-363303
